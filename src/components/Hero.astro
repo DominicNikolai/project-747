@@ -57,7 +57,12 @@
   const fog = new FogExp2(0x000000, 0.002);
   scene.fog = fog;
 
-  const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const camera = new PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
 
   const TUNNEL_LENGTH = 800.0;
   const CAMERA_Z = TUNNEL_LENGTH / 2.0 - 10.0;
@@ -83,7 +88,10 @@
 
   camera.position.set(0, SETTINGS.cameraY, CAMERA_Z);
 
-  const renderer = new WebGLRenderer({ antialias: false, powerPreference: 'high-performance' });
+  const renderer = new WebGLRenderer({
+    antialias: false,
+    powerPreference: 'high-performance'
+  });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   document.body.appendChild(renderer.domElement);
@@ -235,11 +243,15 @@
   for (let i = 0; i < particleCount; i++) {
     particlePositions[i * 3] = (Math.random() - 0.5) * 18;
     particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 8;
-    particlePositions[i * 3 + 2] = Math.random() * TUNNEL_LENGTH - TUNNEL_LENGTH / 2.0;
+    particlePositions[i * 3 + 2] =
+      Math.random() * TUNNEL_LENGTH - TUNNEL_LENGTH / 2.0;
     particleSpeeds[i] = Math.random() * 2.5 + 0.5;
   }
 
-  particleGeometry.setAttribute('position', new BufferAttribute(particlePositions, 3));
+  particleGeometry.setAttribute(
+    'position',
+    new BufferAttribute(particlePositions, 3)
+  );
   particleGeometry.setAttribute('aSpeed', new BufferAttribute(particleSpeeds, 1));
 
   const particleMaterial = new ShaderMaterial({
@@ -441,11 +453,26 @@
     background.set(SETTINGS.bgColor);
   };
 
-  fColors.addColor(SETTINGS, 'color1').name('Line Color 1').onChange(updateColors);
-  fColors.addColor(SETTINGS, 'color2').name('Line Color 2').onChange(updateColors);
-  fColors.addColor(SETTINGS, 'color3').name('Line Color 3').onChange(updateColors);
-  fColors.addColor(SETTINGS, 'color4').name('Line Color 4').onChange(updateColors);
-  fColors.addColor(SETTINGS, 'bgColor').name('Background Color').onChange(updateColors);
+  fColors
+    .addColor(SETTINGS, 'color1')
+    .name('Line Color 1')
+    .onChange(updateColors);
+  fColors
+    .addColor(SETTINGS, 'color2')
+    .name('Line Color 2')
+    .onChange(updateColors);
+  fColors
+    .addColor(SETTINGS, 'color3')
+    .name('Line Color 3')
+    .onChange(updateColors);
+  fColors
+    .addColor(SETTINGS, 'color4')
+    .name('Line Color 4')
+    .onChange(updateColors);
+  fColors
+    .addColor(SETTINGS, 'bgColor')
+    .name('Background Color')
+    .onChange(updateColors);
 
   gui.close();
 
@@ -474,6 +501,7 @@
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
     composer.setSize(window.innerWidth, window.innerHeight);
-    peripheralBlurPass.uniforms.uAspect.value = window.innerWidth / window.innerHeight;
+    peripheralBlurPass.uniforms.uAspect.value =
+      window.innerWidth / window.innerHeight;
   });
 </script>
