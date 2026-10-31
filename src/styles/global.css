@@ -14,11 +14,7 @@ img {
 }
 
 :root {
-  --gradient-btn: linear-gradient(
-    to bottom,
-    #00f,
-    black
-  );
+  --gradient-btn: linear-gradient(to bottom, #00f, black);
 }
 
 button {
@@ -34,15 +30,11 @@ body {
   flex-direction: column;
 }
 
-
-
 body {
   --sb-track-color: #000;
   --sb-thumb-color: var(--gradient-btn);
   --sb-size: 0.7vmax;
 }
-
-/***************************SCROLL***************************/
 
 body::-webkit-scrollbar {
   width: var(--sb-size);
